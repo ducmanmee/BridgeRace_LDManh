@@ -7,6 +7,9 @@ TagManager:
   - brickbridge
   - brickGround
   - Enemy
+  - doormid
+  - doorend
+  - doorwin
   layers:
   - Default
   - TransparentFX

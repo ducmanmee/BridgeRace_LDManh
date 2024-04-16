@@ -9,6 +9,7 @@ public class BrickBridge : MonoBehaviour
     [SerializeField] private MeshRenderer brickBridge;
     [SerializeField] private GameObject boxBrickBr;
     public Constain.ColorPlay currentColor;
+
     private void OnTriggerEnter(Collider other)
     {
         Character C = other.GetComponent<Character>();
@@ -30,15 +31,10 @@ public class BrickBridge : MonoBehaviour
                     BuildBridge(C);
                 }    
             }    
-  
-            
         }   
+
         if (other.CompareTag("Enemy"))
         {
-            if (C.GetListBrickCharacter() <= 0)
-            {
-                boxBrickBr.SetActive(true);
-            }
             if (!isActiveEnemy)
             {
                 isActiveEnemy = true;
@@ -46,7 +42,7 @@ public class BrickBridge : MonoBehaviour
             }
             else
             {
-                if (currentColor != C.GetColorCharacter() && C.CheckUpBridge())
+                if (currentColor != C.GetColorCharacter())
                 {
                     BuildBridge(C);
                 }

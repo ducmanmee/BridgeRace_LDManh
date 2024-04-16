@@ -11,7 +11,9 @@ public class MapManager : MonoBehaviour
     public bool isActiveGround1;
     public bool isActiveGround2;
     public bool isActiveGround3;
-    private BrickGround[,] brickArray;
+    private BrickGround[,] brickArrayFirst;
+    private BrickGround[,] brickArrayMid;
+    private BrickGround[,] brickArrayEnd;
     public int width;
     public int height;
     private float distanceEnemyToDoor;
@@ -36,8 +38,10 @@ public class MapManager : MonoBehaviour
 
     public void OnInit()
     {
-        brickArray = new BrickGround[height, width];
-        InstantiateBrick(Constain.POSBRICK_FIRSTGROUND);
+        brickArrayFirst = new BrickGround[height, width];
+        brickArrayMid = new BrickGround[height, width];
+        brickArrayEnd = new BrickGround[height, width];
+        InstantiateBrick(Constain.POSBRICK_FIRSTGROUND, brickArrayFirst);
         isActiveGround1 = true;
         isActiveGround2 = false;
         isActiveGround3 = false;
@@ -49,7 +53,7 @@ public class MapManager : MonoBehaviour
     }
 
 
-    public void InstantiateBrick(Vector3 pos)
+    public void InstantiateBrick(Vector3 pos, BrickGround[,] brickArray)
     {
         for (int i = 0; i <= height; i += 2)
         {
@@ -64,7 +68,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public BrickGround GetNearestBrick(Transform trans, Enemy enemy)
+    public BrickGround GetNearestBrick(Transform trans, Enemy enemy, BrickGround[,] brickArray)
     {
         if (brickArray == null || brickArray.Length == 0)
         {
@@ -101,4 +105,7 @@ public class MapManager : MonoBehaviour
     public void SetIsActiveGround2(bool value) => isActiveGround2 = value;
     public bool GetIsActiveGround3() => isActiveGround3;
     public void SetIsActiveGround3(bool value) => isActiveGround3 = value;
+    public BrickGround[,] GetFirstArray() => brickArrayFirst;
+    public BrickGround[,] GetMidArray() => brickArrayMid;
+    public BrickGround[,] GetEndArray() => brickArrayEnd;
 }

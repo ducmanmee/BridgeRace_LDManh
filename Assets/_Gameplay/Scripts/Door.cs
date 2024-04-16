@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -40,7 +41,17 @@ public class Door : MonoBehaviour
                 }
                 OpenDoor();
                 isActiveDoor = false;
+                if (!MapManager.Instance.GetIsActiveGround2())
+                {
+                    MapManager.Instance.SetIsActiveGround2(true);
+                    MapManager.Instance.InstantiateBrick(Constain.POSBRICK_MIDGROUND, MapManager.Instance.GetMidArray());
+                }
+                if (!MapManager.Instance.GetIsActiveGround3() && MapManager.Instance.GetIsActiveGround2())
+                {
+                    MapManager.Instance.SetIsActiveGround3(true);
+                    MapManager.Instance.InstantiateBrick(Constain.POSBRICK_ENDGROUND, MapManager.Instance.GetEndArray());
+                }
             }
-        }    
+        } 
     }
 }

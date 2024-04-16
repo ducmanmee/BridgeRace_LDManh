@@ -10,6 +10,7 @@ public class Enemy : Character
     private BrickGround target;
     public Door doorEnemy;
     private LayerMask groundLayer;
+    private BrickGround[,] currentGround; 
 
     void Update()
     {
@@ -39,6 +40,7 @@ public class Enemy : Character
     {
         base.OnInit();
         ChangeState(new IdleState());
+        currentGround = MapManager.Instance.GetFirstArray();
     }
 
     public override void AddBrick()
@@ -48,7 +50,7 @@ public class Enemy : Character
 
     public void FindNearestBrick()
     {
-        target = MapManager.Instance.GetNearestBrick(this.transform, this);
+        target = MapManager.Instance.GetNearestBrick(this.transform, this, currentGround);
         if(target != null)
         {
             agent.SetDestination(target.transform.position);
@@ -57,11 +59,11 @@ public class Enemy : Character
 
     public void Moving()
     {
-        if(this.GetListBrickCharacter() > 3)
+        if(this.GetListBrickCharacter() > 6)
         {
             ChangeState(new BuildBridge());
         }
-        if (MapManager.Instance.GetNearestBrick(this.transform, this) != null)
+        if (MapManager.Instance.GetNearestBrick(this.transform, this, currentGround) != null)
         {
             if( Vector3.Distance(this.transform.position, target.transform.position) < .1f)
             {
@@ -99,4 +101,17 @@ public class Enemy : Character
         Debug.DrawLine(transform.position, transform.position + Vector3.forward * 1f, Color.red);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("doormid"))
+        {
+            currentGround = MapManager.Instance.GetMidArray();
+            ChangeState(new TakeBrick());
+        }
+        if (other.CompareTag("doorend"))
+        {
+            currentGround = MapManager.Instance.GetEndArray();
+            ChangeState(new TakeBrick());
+        }
+    }
 }

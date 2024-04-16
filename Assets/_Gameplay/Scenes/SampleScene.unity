@@ -809,6 +809,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1340251653}
     m_Modifications:
+    - target: {fileID: 2929252283123773937, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -839,11 +843,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 615.11
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -896,6 +900,18 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252285020698103, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -1361,6 +1377,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1344899198}
     m_Modifications:
+    - target: {fileID: 1358507385064445894, guid: 1d83af82fdcd4ba42a83e514c81c14ef, type: 3}
+      propertyPath: m_TagString
+      value: doorwin
+      objectReference: {fileID: 0}
     - target: {fileID: 7851087824364354857, guid: 1d83af82fdcd4ba42a83e514c81c14ef, type: 3}
       propertyPath: m_Name
       value: 'EndGround '
@@ -1466,6 +1486,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462914143964522514, guid: e9f7e9fd7eb5a8d49ac83fbbff6b4a18, type: 3}
+      propertyPath: m_TagString
+      value: doorend
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411426334704034737, guid: e9f7e9fd7eb5a8d49ac83fbbff6b4a18, type: 3}
+      propertyPath: m_TagString
+      value: doorend
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625711538091449234, guid: e9f7e9fd7eb5a8d49ac83fbbff6b4a18, type: 3}
+      propertyPath: m_TagString
+      value: doorend
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f7e9fd7eb5a8d49ac83fbbff6b4a18, type: 3}
 --- !u!1001 &5180977114163191368
@@ -1536,6 +1568,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1344899198}
     m_Modifications:
+    - target: {fileID: 1824074943523607918, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189087438479974774, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_TagString
+      value: doormid
+      objectReference: {fileID: 0}
     - target: {fileID: 5729975175833133013, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1583,6 +1623,22 @@ PrefabInstance:
     - target: {fileID: 5729975175833133014, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
       propertyPath: m_Name
       value: FirstGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551621410225578544, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_TagString
+      value: doormid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551621410287657388, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_TagString
+      value: doormid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551621410296585812, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_TagString
+      value: doormid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551621411184537273, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
+      propertyPath: m_TagString
+      value: doormid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb2ae51d88e45cc4ebb98ef141f1dc2e, type: 3}
