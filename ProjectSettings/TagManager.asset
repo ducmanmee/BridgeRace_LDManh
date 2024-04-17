@@ -10,6 +10,7 @@ TagManager:
   - doormid
   - doorend
   - doorwin
+  - Ground
   layers:
   - Default
   - TransparentFX

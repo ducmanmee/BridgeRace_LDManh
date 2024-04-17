@@ -6,8 +6,8 @@ public class Player : Character
 {
     public static Player Instance;
     [SerializeField] private FixedJoystick joystick;
-
     [SerializeField] private float moveSpeed;
+    public LayerMask groundLayer;
     
 
     private void MakeInstance()
@@ -22,6 +22,14 @@ public class Player : Character
     {
         MakeInstance();
         
+    }
+
+    private void Update()
+    {
+        if(CheckGround())
+        {
+            Debug.Log("ground");
+        }
     }
 
     private void FixedUpdate()
@@ -48,6 +56,16 @@ public class Player : Character
             ChangeAnim(Constain.ANIM_IDLE);
         }
     }
+
+    private bool CheckGround()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, 5f, groundLayer))
+        {
+            return true;
+        }    
+        return false;
+    }    
 
     public override void AddBrick()
     {

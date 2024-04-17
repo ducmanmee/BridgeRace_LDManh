@@ -18,7 +18,6 @@ public class Enemy : Character
         {
             currentState.OnExecute(this);
         }
-        CheckGround();
     }
 
     public void ChangeState(IState<Enemy> newState)
@@ -63,7 +62,7 @@ public class Enemy : Character
         {
             ChangeState(new BuildBridge());
         }
-        if (MapManager.Instance.GetNearestBrick(this.transform, this, currentGround) != null)
+        if (target != null)
         {
             if( Vector3.Distance(this.transform.position, target.transform.position) < .1f)
             {
@@ -90,28 +89,40 @@ public class Enemy : Character
     {
         doorEnemy = door;
     }   
-    
-    private void CheckGround()
-    {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 1f, groundLayer))
-        {
-            Debug.Log(hit.collider.name);
-        }
-        Debug.DrawLine(transform.position, transform.position + Vector3.forward * 1f, Color.red);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("doormid"))
         {
-            currentGround = MapManager.Instance.GetMidArray();
-            ChangeState(new TakeBrick());
+               
+            BrickEnemyGroundMid();
         }
         if (other.CompareTag("doorend"))
         {
-            currentGround = MapManager.Instance.GetEndArray();
-            ChangeState(new TakeBrick());
+            BrickEnemyGroundEnd();
         }
     }
+
+    private void BrickEnemyGroundMid()
+    {
+        if (!MapManager.Instance.GetIsActiveGround2())
+        {
+            MapManager.Instance.SetIsActiveGround2(true);
+            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_MIDGROUND, MapManager.Instance.GetMidArray());
+        }
+        currentGround = MapManager.Instance.GetMidArray();
+        ChangeState(new TakeBrick());
+    }
+
+    private void BrickEnemyGroundEnd()
+    {
+        if (!MapManager.Instance.GetIsActiveGround3())
+        {
+            MapManager.Instance.SetIsActiveGround3(true);
+            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_ENDGROUND, MapManager.Instance.GetEndArray());
+        }
+        currentGround = MapManager.Instance.GetEndArray();
+        ChangeState(new TakeBrick());
+    }
+
 }
