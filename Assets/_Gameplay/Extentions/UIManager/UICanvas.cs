@@ -38,7 +38,7 @@ public class UICanvas : MonoBehaviour
     //dong canvas sau timer s 
     public virtual void Close(float timer)
     {
-        Invoke(nameof(Close), timer);
+        Invoke(nameof(CloseDirectly), timer);
     }
 
     //dong canvas ttruc tiep

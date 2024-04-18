@@ -5,7 +5,18 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>
 {
     Dictionary<System.Type, UICanvas> canvasActives = new Dictionary<System.Type, UICanvas>();
+    Dictionary<System.Type, UICanvas> canvasPrefabs = new Dictionary<System.Type, UICanvas>();
+
     [SerializeField] Transform parent;
+
+    private void Awake() {
+        //Load prefab tu resource
+        UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
+        for(int i = 0; i < prefabs.Length; i++)
+        {
+            canvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
+        }
+    }
 
     //Mo canvas
     public T OpenUI<T>() where T : UICanvas
@@ -63,7 +74,7 @@ public class UIManager : Singleton<UIManager>
     //Get prefab
     private T GetUIPrefab<T>() where T : UICanvas
     {
-        return canvasActives[typeof(T)] as T;
+        return canvasPrefabs[typeof(T)] as T;
 
     }
 

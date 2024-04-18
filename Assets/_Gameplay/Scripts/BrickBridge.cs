@@ -15,7 +15,7 @@ public class BrickBridge : MonoBehaviour
         Character C = other.GetComponent<Character>();
         if (other.CompareTag("Player"))
         {
-            if(C.GetListBrickCharacter() <= 0)
+            if(C.GetListBrickCharacter() <= 0 && currentColor != C.GetColorCharacter())
             {
                 boxBrickBr.SetActive(true);
             }    

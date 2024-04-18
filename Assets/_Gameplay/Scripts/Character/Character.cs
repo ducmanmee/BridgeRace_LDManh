@@ -127,5 +127,21 @@ public class Character : MonoBehaviour
     }    
 
     public Rigidbody GetRigibody() => characterBody;
+    protected void BrickEnemyGroundMid()
+    {
+        if (!MapManager.Instance.GetIsActiveGround2())
+        {
+            MapManager.Instance.SetIsActiveGround2(true);
+            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_MIDGROUND, MapManager.Instance.GetMidArray());
+        }
+    }
 
+    protected void BrickEnemyGroundEnd()
+    {
+        if (!MapManager.Instance.GetIsActiveGround3())
+        {
+            MapManager.Instance.SetIsActiveGround3(true);
+            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_ENDGROUND, MapManager.Instance.GetEndArray());
+        }
+    }
 }

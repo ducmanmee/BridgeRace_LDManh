@@ -72,4 +72,16 @@ public class Player : Character
         base.AddBrick();
     }
 
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("doormid"))
+        {
+            BrickEnemyGroundMid();
+        }  
+        if(other.CompareTag("doorend"))
+        {
+            BrickEnemyGroundEnd();
+        }  
+    }
+
 }

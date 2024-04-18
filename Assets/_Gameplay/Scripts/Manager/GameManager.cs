@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Material> materialColor;
     [SerializeField] private List<Transform> startPointEnemy;
     [SerializeField] private List<GameObject> EnemyList;
-    [SerializeField] private Vector3 startPointPlayer;
+    public static Vector3 startPoint;
     [SerializeField] private GameObject enemy;
+
     private Door nearestDoor;
     private float minDistance = Mathf.Infinity;
     private float distanceEnemyToDoor;
@@ -31,13 +32,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        OnInit();
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
+        Time.timeScale = 0;
     }
 
     public void OnInit()
     {
         EnemyList = new List<GameObject>();
-        startPointPlayer = Vector3.zero;
+        startPoint = Vector3.zero;
+        LevelManager.instance.InstantiateLevel(LevelManager.instance.GetCurrentLevel() ,startPoint);
         Player.Instance.OnInit();
         SwarmEnemy();
     }    

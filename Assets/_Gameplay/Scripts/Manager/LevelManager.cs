@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public static int currentLevel;
     public static LevelManager instance;
     [SerializeField] private List<GameObject> LevelList;
-    public int currentLevel;
+    private GameObject currentLevelPrefab;
     private void MakeInstance()
     {
         if(instance == null)
@@ -18,5 +19,22 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         MakeInstance();
+        currentLevel = 1;
     }
+
+    public void NextLevel(int level)
+    {
+        currentLevel += 1;
+
+    }
+    public void InstantiateLevel(int level, Vector3 pos)
+    {
+        if (currentLevelPrefab != null)
+        {
+            Destroy(currentLevelPrefab);
+        }
+        currentLevelPrefab = Instantiate(LevelList[level - 1], pos, Quaternion.identity);
+    }
+
+    public int GetCurrentLevel() => currentLevel;
 }

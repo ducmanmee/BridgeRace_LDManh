@@ -93,36 +93,16 @@ public class Enemy : Character
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("doormid"))
-        {
-               
+        {            
             BrickEnemyGroundMid();
+            currentGround = MapManager.Instance.GetMidArray();
+            ChangeState(new TakeBrick());
         }
         if (other.CompareTag("doorend"))
         {
             BrickEnemyGroundEnd();
+            currentGround = MapManager.Instance.GetEndArray();
+            ChangeState(new TakeBrick());
         }
     }
-
-    private void BrickEnemyGroundMid()
-    {
-        if (!MapManager.Instance.GetIsActiveGround2())
-        {
-            MapManager.Instance.SetIsActiveGround2(true);
-            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_MIDGROUND, MapManager.Instance.GetMidArray());
-        }
-        currentGround = MapManager.Instance.GetMidArray();
-        ChangeState(new TakeBrick());
-    }
-
-    private void BrickEnemyGroundEnd()
-    {
-        if (!MapManager.Instance.GetIsActiveGround3())
-        {
-            MapManager.Instance.SetIsActiveGround3(true);
-            MapManager.Instance.InstantiateBrick(Constain.POSBRICK_ENDGROUND, MapManager.Instance.GetEndArray());
-        }
-        currentGround = MapManager.Instance.GetEndArray();
-        ChangeState(new TakeBrick());
-    }
-
 }

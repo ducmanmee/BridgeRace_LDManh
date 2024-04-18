@@ -8,10 +8,12 @@ public class CanvasMainMenu : UICanvas
     {
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
+        GameManager.Instance.OnInit();
+        Time.timeScale = 1;
     }
 
     public void SettingsButton()
     {
-        UIManager.Instance.OpenUI<CanvasSetting>();
+        UIManager.Instance.OpenUI<CanvasSetting>().SetState(this);
     }
 }

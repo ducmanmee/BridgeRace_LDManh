@@ -25,10 +25,12 @@ public class VictoryBox : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             isWin = true;
+            UIManager.Instance.OpenUI<CanvasVictory>();
         }   
         if(other.CompareTag("Enemy"))
         {
             isWin = false;
+            UIManager.Instance.OpenUI<CanvasFail>();
         }    
     }
 }
