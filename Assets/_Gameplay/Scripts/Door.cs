@@ -11,11 +11,22 @@ public class Door : MonoBehaviour
     private Character ownerDoor;
     public bool isActiveDoor;
 
+    private void Awake()
+    {
+        OnInit();
+    }
+
     private void Start()
+    {
+        
+    }
+
+    public void OnInit()
     {
         ownerDoor = null;
         isActiveDoor = true;
     }
+        
 
     private void OpenDoor()
     {

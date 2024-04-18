@@ -12,6 +12,7 @@ public class Constain
     public static Vector3 POSBRICK_ENDGROUND = new Vector3(-15f, 42.1f, 110f);
     public enum ColorPlay
     {
+        None = -1,
         blue = 0,
         green = 1,
         red = 2,

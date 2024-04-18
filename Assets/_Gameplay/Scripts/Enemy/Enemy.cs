@@ -10,7 +10,7 @@ public class Enemy : Character
     private BrickGround target;
     public Door doorEnemy;
     private LayerMask groundLayer;
-    private BrickGround[,] currentGround; 
+    private BrickGround[,] currentGround;
 
     void Update()
     {
@@ -39,6 +39,7 @@ public class Enemy : Character
     {
         base.OnInit();
         ChangeState(new IdleState());
+        GameManager.Instance.GetNearestDoor(DoorManager.instance.GetDoorList(), this);
         currentGround = MapManager.Instance.GetFirstArray();
     }
 
@@ -76,8 +77,16 @@ public class Enemy : Character
     }
 
     public void EnemyBuildBridge()
-    { 
-        agent.SetDestination(doorEnemy.transform.position);
+    {
+
+        if (doorEnemy != null)
+        {
+            agent.SetDestination(doorEnemy.transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Agent or doorEnemy is not assigned!");
+        }
     }    
 
     public void StopMoving()

@@ -21,6 +21,8 @@ public class CanvasVictory : UICanvas
 
     public void NextLevelButton()
     {
-        
+        Close(0);
+        LevelManager.instance.NextLevel();
+        GameManager.Instance.OnInit();
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983403741652398726}
   - component: {fileID: 4026285049353389710}
+  - component: {fileID: 1244160728709855223}
   m_Layer: 0
   m_Name: VictoryBox
   m_TagString: Untagged
@@ -44,6 +45,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1244160728709855223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612394968087087289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6885b52d289b10a4c9ed5666673b1855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWin: 0
 --- !u!1 &6816949578192145964
 GameObject:
   m_ObjectHideFlags: 0

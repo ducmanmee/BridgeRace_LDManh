@@ -24,14 +24,6 @@ public class Player : Character
         
     }
 
-    private void Update()
-    {
-        if(CheckGround())
-        {
-            Debug.Log("ground");
-        }
-    }
-
     private void FixedUpdate()
     {
         Movement();
@@ -39,16 +31,19 @@ public class Player : Character
 
     public override void OnInit()
     {
-        SetColorCharacter(Constain.ColorPlay.purple);
+        SetColorCharacter(Constain.ColorPlay.blue);
+        transform.position = GameManager.startPoint;
         base.OnInit();
     }    
 
     public override void Movement()
     {
+        Vector3 movementDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
         GetRigibody().velocity = new Vector3(joystick.Horizontal * moveSpeed, GetRigibody().velocity.y, joystick.Vertical * moveSpeed);
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
-            transform.rotation = Quaternion.LookRotation(GetRigibody().velocity);
+            transform.forward = movementDirection;
+            //transform.rotation = Quaternion.LookRotation(GetRigibody().velocity);
             ChangeAnim(Constain.ANIM_RUN); 
         }
         else

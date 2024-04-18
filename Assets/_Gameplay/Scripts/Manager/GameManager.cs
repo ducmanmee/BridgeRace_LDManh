@@ -40,22 +40,21 @@ public class GameManager : MonoBehaviour
     {
         EnemyList = new List<GameObject>();
         startPoint = Vector3.zero;
-        LevelManager.instance.InstantiateLevel(LevelManager.instance.GetCurrentLevel() ,startPoint);
-        Player.Instance.OnInit();
+        LevelManager.instance.InstantiateLevel(startPoint);
         SwarmEnemy();
+        Player.Instance.OnInit();
     }    
 
-    private void SwarmEnemy()
+    public void SwarmEnemy()
     {
         List<Constain.ColorPlay> colors = new List<Constain.ColorPlay>((Constain.ColorPlay[])Enum.GetValues(typeof(Constain.ColorPlay)));
-        colors.Remove(Player.Instance.GetColorCharacter());   
+        colors.RemoveAt(((int)Player.Instance.GetColorCharacter()));
         for (int i = 0; i < startPointEnemy.Count; i++)
         {
             GameObject Enemy = Instantiate(enemy, startPointEnemy[i].position, Quaternion.identity);
             Enemy.gameObject.name = "Enemy" + i.ToString();
             EnemyList.Add(Enemy);
             Enemy E = Enemy.GetComponent<Enemy>();
-            GetNearestDoor(DoorManager.instance.GetDoorList(), E);
             E.SetColorCharacter(colors[i]);
             E.OnInit();
         }    
@@ -74,7 +73,6 @@ public class GameManager : MonoBehaviour
                 {
                     minDistance = distanceEnemyToDoor;
                     nearestDoor = door;
-
                 }
             }
         }
@@ -84,4 +82,13 @@ public class GameManager : MonoBehaviour
             nearestDoor.SetOwnerDoor(enemy);
         }
     }
+
+    public void DestroyEnemy()
+    {
+        for(int i = 0; i < EnemyList.Count; i++)
+        {
+            Destroy(EnemyList[i]);
+        }
+    }
+        
 }

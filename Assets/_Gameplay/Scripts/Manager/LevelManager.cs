@@ -22,18 +22,19 @@ public class LevelManager : MonoBehaviour
         currentLevel = 1;
     }
 
-    public void NextLevel(int level)
+    public void NextLevel()
     {
         currentLevel += 1;
+        GameManager.Instance.DestroyEnemy();
 
     }
-    public void InstantiateLevel(int level, Vector3 pos)
+    public void InstantiateLevel(Vector3 pos)
     {
         if (currentLevelPrefab != null)
         {
             Destroy(currentLevelPrefab);
         }
-        currentLevelPrefab = Instantiate(LevelList[level - 1], pos, Quaternion.identity);
+        currentLevelPrefab = Instantiate(LevelList[currentLevel - 1], pos, Quaternion.identity);
     }
 
     public int GetCurrentLevel() => currentLevel;

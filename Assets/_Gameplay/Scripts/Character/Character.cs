@@ -25,6 +25,11 @@ public class Character : MonoBehaviour
 
     public virtual void OnInit()
     {
+        if(BrickCharacterList != null)
+        {
+            BrickCharacterList.Clear();
+        }
+            
         ChangeAnim(Constain.ANIM_IDLE);
         SetMaterialCharacter();
         BrickCharacterList = new List<GameObject>();

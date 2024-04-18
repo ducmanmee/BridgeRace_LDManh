@@ -10,6 +10,11 @@ public class BrickBridge : MonoBehaviour
     [SerializeField] private GameObject boxBrickBr;
     public Constain.ColorPlay currentColor;
 
+    private void Awake()
+    {
+        currentColor = Constain.ColorPlay.None;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Character C = other.GetComponent<Character>();
